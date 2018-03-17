@@ -6,6 +6,12 @@ import traceback
 import glob
 import os
 import threading
+#图片的基本参数获取
+try:
+    from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+except ImportError:
+    import Image, ImageDraw, ImageFont, ImageEnhance
+
 '''
 
     1 (1-bit pixels, black and white, stored with one pixel per byte)
@@ -53,11 +59,6 @@ import threading
     draw.arc( (0, 0, width-1, height-1), 0, 360, fill=255)
 '''
 
-#图片的基本参数获取
-try:
-    from PIL import Image, ImageDraw, ImageFont, ImageEnhance
-except ImportError:
-    import Image, ImageDraw, ImageFont, ImageEnhance
 
 
 def trans_parency2(ifile,ofile,alpha=128):
@@ -344,7 +345,10 @@ if __name__ == "__main__":
     #merge_image('RGB',[r"D:\Temp\test0.jpg",r"D:\Temp\test1.jpg",r"D:\Temp\test2.jpg"],r"d:\temp\test.jpg")
      #image 对象
     #resizeImg(r'd:\temp\bq1.jpg',r'd:\temp\xl1.jpg', dst_w=200, qua=99)
-    resizeFolderImg('/storage/emulated/0/Pictures/表情', dst_w=200, dst_h=0, qua=100)
+    idir = '/storage/emulated/0/Pictures/表情'
+    if not os.path.isdir(idir):
+        idir = r'D:\TEMP\bq'
+    resizeFolderImg(idir, dst_w=200, dst_h=0, qua=100)
 
     '''
     主要是实现功能， 代码没怎么整理

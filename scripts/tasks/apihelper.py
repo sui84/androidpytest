@@ -2,11 +2,16 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
+#sys.path.append('..')
+import os
+parentpath =os.path.join(os.path.dirname(os.path.realpath(__file__)),'..')
+print parentpath
+sys.path.append(parentpath)
 import urllib2
 from bs4 import BeautifulSoup
-import loghelper
+from utils import loghelper
 #import requests
-import geohelper
+from utils import geohelper
 import pprint
 import HTMLParser
 import json
@@ -20,8 +25,10 @@ class ApiHelper(object):
         self.hp =HTMLParser.HTMLParser()
         self.weatherurl_city='http://www.sojson.com/open/api/weather/json.shtml?city=%s'
         self.weatherurl_jwu='http://www.caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%.2f,%.2f&format=json&product=minutes_prec&token=96Ly7wgKGq6FhllM&random=0.8600497214532319)'
+        self.weatherurl_jp='http://www.jnto.go.jp/weather/chc/area_list.php?day=1&region_id=5'
         self.gh = geohelper.GeoHelper()
         self.ipurls = ['http://ip.chinaz.com/getip.aspx']
+        self.address = 'http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=111'
         self.jwus = {u'珠海': ( 21.9745252,113.931350085),u'大阪': ( 34.704365,135.501887),'kyoto': (35.0231321,135.7634074),u'奈良': ( 34.684545,135.804836)}
 
     def GetResult(self,trs,idx):
@@ -42,9 +49,8 @@ class ApiHelper(object):
             url = 'http://qq.ip138.com/hl.asp?from=%s&to=%s&q=100' % (fcur,tcur)
             print url
             content = urllib2.urlopen(url).read()
-            html=urllib2.urlopen(url)
             #soup = BeautifulSoup(content)  not work
-            obj=BeautifulSoup(html.read(),'html.parser')
+            obj=BeautifulSoup(content,'html.parser')
             trs=obj.find_all('tr')
             result+=self.GetResult(trs,1)
             result+=self.GetResult(trs,2)
@@ -340,6 +346,7 @@ u'temp': 20.0}'''
         print result
         return result
 
+    @loghelper.exception(logger)
     def location(self,wjdu):
         data = self.gh.GetLocation(wjdu)
         result = "纬度:%s\n经度:%s\n%s" % (data.get('lat'),data.get('lon'),data.get('display_name'))
@@ -350,10 +357,28 @@ u'temp': 20.0}'''
         result += "\n" + cweather
         return result
 
+    @loghelper.exception(logger)
+    @loghelper.stdouttofile(loghelper.LOGPATH)
+    def weather_jps(self,citys):
+        print self.weatherurl_jp
+        content = urllib2.urlopen(self.weatherurl_jp).read()
+        obj=BeautifulSoup(content,'html.parser')
+        trs=obj.find_all('tr')
+        for tr in trs:
+            spans=trs[0].find_all('span')
+            if tr.a <> None and tr.a.text in citys:
+                city =  tr.a.text
+                tds=tr.find_all('td')
+                print 'city:%s\t%s\ttemp:%s~%s\train:%s\t%s\ttemp:%s~%s\train:%s' \
+                      % (city,spans[0].text.replace('\n                        ',''),tds[2].span.text,tds[1].span.text,tds[3].text,spans[1].text.replace('\n                        ',''),tds[6].span.text,tds[5].span.text,tds[7].text)
+
+
 if __name__ == '__main__':
     ah =ApiHelper()
-    #ah.GetHuiLV( 'CNY',['USD','MOP','JPY'])
+    ah.weather_jps(citys=[u'京都',u'大阪',u'奈良'])
+    ah.GetHuiLV( 'CNY',['USD','MOP','JPY'])
     ah.weather_jwdus(['kyoto',u'大阪',u'珠海',u'奈良'])
     ah.weather_citys(['kyoto',u'大阪',u'珠海',u'奈良'])
+    #ah.location(( 21.9745252,113.931350085))
 
 

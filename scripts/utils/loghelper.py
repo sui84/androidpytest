@@ -1,6 +1,8 @@
 #encoding=utf-8
 import logging
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 import time
 import traceback
 import os
@@ -52,7 +54,7 @@ def stdouttofile(logpath):
                 with open (logpath,'a') as f:
                     __console__=sys.stdout
                     sys.stdout=f
-                    print '\n',time.asctime( time.localtime(time.time()) )
+                    print '\n',time.asctime(time.localtime(time.time()))
                     result = func(*args, **kwargs)
                     sys.stdout=__console__
                     return result
