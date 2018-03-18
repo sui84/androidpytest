@@ -36,9 +36,9 @@ def GetFile(host,usr,pwd,smbdir,srcf,dstf):
         conn.retrieveFile(smbdir,srcf,fobj)
 
 
-def GetFiles(host,usr,pwd,remote_dir,local_dir):
+def GetFiles(host,port,usr,pwd,remote_dir,local_dir):
     import paramiko
-    transport = paramiko.Transport((host, 22))
+    transport = paramiko.Transport((host, port))
     transport.connect(username=usr, password=pwd)
     sftp = paramiko.SFTPClient.from_transport(transport)
     fattrs=sftp.listdir_attr(remote_dir)
@@ -55,9 +55,9 @@ def GetFiles(host,usr,pwd,remote_dir,local_dir):
     print 'total:',cnt,'files'
     transport.close()
 
-def PutFiles(host,usr,pwd,local_dir,remote_dir):
+def PutFiles(host,port,usr,pwd,local_dir,remote_dir):
     import paramiko
-    transport = paramiko.Transport((host, 22))
+    transport = paramiko.Transport((host, port))
     transport.connect(username=usr, password=pwd)
     sftp = paramiko.SFTPClient.from_transport(transport)
     #files=sftp.listdir(local_dir)
@@ -74,8 +74,8 @@ def PutFiles(host,usr,pwd,local_dir,remote_dir):
     transport.close()
 
 if __name__ == "__main__":
-    PutFiles('192.168.1.1','root','test','/storage/emulated/0/Pictures/表情','/mnt/sda1/opt/img/biaoqing')
+    PutFiles('192.168.1.1',22,'root','test','/storage/emulated/0/Pictures/表情','/mnt/sda1/opt/img/biaoqing')
     time.sleep(10)
-    GetFiles('192.168.1.1','root','test','/mnt/sda1/opt/img/biaoqing/out','/storage/emulated/0/Pictures/表情/out')
+    GetFiles('192.168.1.1',22,'root','test','/mnt/sda1/opt/img/biaoqing/out','/storage/emulated/0/Pictures/表情/out')
 
 
