@@ -104,7 +104,7 @@ if __name__ == '__main__':
     #TestMssqldb("mssqldb")
     #TestMysqldb("mysqldb")
     #TestSqlitedb("sqlitedb")
-    mydb = SqlHelper(host="6321596.iok.la",user="root",pwd="P@ssw0rd",db="log",dbtype='mysql')
+    mydb = SqlHelper(host="6321596.iok.la",user="root",pwd="test",db="log",dbtype='mysql')
     resList = mydb.ExecQuery("select * from exchange")
     print resList
 
