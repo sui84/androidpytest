@@ -1,0 +1,387 @@
+[2018-03-18 00:32:39,845 - testlogger - INFO 20572 MainProcess 20548 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F28B70>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+[2018-03-18 00:32:39,845 - testlogger - INFO 20572 MainProcess 20548 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F28B70>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+
+Sun Mar 18 00:32:39 2018
+http://www.jnto.go.jp/weather/chc/area_list.php?day=1&region_id=5
+city:京都	18三月(星期日)	temp:3°~18°	rain:--%	19三月(星期一)	temp:8°~16°	rain:60%
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values(%s,%s,%s,%s,%s,%s)
+[2018-03-18 00:35:33,187 - testlogger - INFO 21324 MainProcess 20744 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003EF3B38>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+[2018-03-18 00:35:33,187 - testlogger - INFO 21324 MainProcess 20744 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003EF3B38>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+
+Sun Mar 18 00:35:33 2018
+http://www.jnto.go.jp/weather/chc/area_list.php?day=1&region_id=5
+city:京都	18三月(星期日)	temp:3°~18°	rain:--%	19三月(星期一)	temp:8°~16°	rain:60%
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values(apihelper.weather_jps,京都,18三月(星期日),3°,18°,--%)
+[2018-03-18 00:36:12,380 - testlogger - INFO 21180 MainProcess 13524 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003EB6B38>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+[2018-03-18 00:36:12,380 - testlogger - INFO 21180 MainProcess 13524 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003EB6B38>,),kwargs={'citys': [u'\u4eac\u90fd', u'\u5927\u962a', u'\u5948\u826f']}
+
+Sun Mar 18 00:36:12 2018
+http://www.jnto.go.jp/weather/chc/area_list.php?day=1&region_id=5
+city:京都	18三月(星期日)	temp:3°~18°	rain:--%	19三月(星期一)	temp:8°~16°	rain:60%
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','京都','18三月(星期日)','3°','18°','--%')
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','京都','19三月(星期一)','8°','16°','60%')
+city:大阪	18三月(星期日)	temp:6°~18°	rain:--%	19三月(星期一)	temp:9°~17°	rain:60%
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','大阪','18三月(星期日)','6°','18°','--%')
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','大阪','19三月(星期一)','9°','17°','60%')
+city:奈良	18三月(星期日)	temp:2°~19°	rain:--%	19三月(星期一)	temp:7°~17°	rain:60%
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','奈良','18三月(星期日)','2°','19°','--%')
+insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('apihelper.weather_jps','奈良','19三月(星期一)','7°','17°','60%')
+[2018-03-18 00:40:57,911 - testlogger - INFO 21252 MainProcess 20936 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E6AB38>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+[2018-03-18 00:40:57,911 - testlogger - INFO 21252 MainProcess 20936 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E6AB38>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+
+Sun Mar 18 00:40:57 2018
+http://qq.ip138.com/hl.asp?from=CNY&to=USD&q=100
+http://qq.ip138.com/hl.asp?from=CNY&to=MOP&q=100
+http://qq.ip138.com/hl.asp?from=CNY&to=JPY&q=100
+
+人民币	当前汇率	美元	
+100	0.157964	15.7964	
+人民币	当前汇率	澳门元	
+100	1.276000	127.6	
+人民币	当前汇率	日元	
+100	16.737277	1673.7277	
+[2018-03-18 00:58:13,200 - testlogger - INFO 23312 MainProcess 23400 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004026B70>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+[2018-03-18 00:58:13,200 - testlogger - INFO 23312 MainProcess 23400 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004026B70>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+
+Sun Mar 18 00:58:13 2018
+http://qq.ip138.com/hl.asp?from=CNY&to=USD&q=100
+insert into exchange(createdby,curfrom,rate,curto) values('apihelper.GetHuiLV','100','0.157964','0.157964')
+http://qq.ip138.com/hl.asp?from=CNY&to=MOP&q=100
+insert into exchange(createdby,curfrom,rate,curto) values('apihelper.GetHuiLV','100','1.276000','1.276000')
+http://qq.ip138.com/hl.asp?from=CNY&to=JPY&q=100
+insert into exchange(createdby,curfrom,rate,curto) values('apihelper.GetHuiLV','100','16.737277','16.737277')
+
+人民币	当前汇率	美元
+100	0.157964	15.7964
+人民币	当前汇率	澳门元
+100	1.276000	127.6
+人民币	当前汇率	日元
+100	16.737277	1673.7277
+[2018-03-18 01:02:43,500 - testlogger - INFO 24276 MainProcess 22792 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000405DB70>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+[2018-03-18 01:02:43,500 - testlogger - INFO 24276 MainProcess 22792 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000405DB70>, 'CNY', ['USD', 'MOP', 'JPY']),kwargs={}
+
+Sun Mar 18 01:02:43 2018
+http://qq.ip138.com/hl.asp?from=CNY&to=USD&q=100
+insert into exchange(createdby,curfrom,curto,ratefrom,rate,rateto) values('apihelper.GetHuiLV','CNY','USD','100','0.157964','15.7964')
+http://qq.ip138.com/hl.asp?from=CNY&to=MOP&q=100
+insert into exchange(createdby,curfrom,curto,ratefrom,rate,rateto) values('apihelper.GetHuiLV','CNY','MOP','100','1.276000','127.6')
+http://qq.ip138.com/hl.asp?from=CNY&to=JPY&q=100
+insert into exchange(createdby,curfrom,curto,ratefrom,rate,rateto) values('apihelper.GetHuiLV','CNY','JPY','100','16.737277','1673.7277')
+
+人民币	当前汇率	美元
+100	0.157964	15.7964
+人民币	当前汇率	澳门元
+100	1.276000	127.6
+人民币	当前汇率	日元
+100	16.737277	1673.7277
+[2018-03-18 01:11:03,887 - testlogger - INFO 24168 MainProcess 19072 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003FA8BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:11:03,887 - testlogger - INFO 24168 MainProcess 19072 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003FA8BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:11:03 2018
+纬度:35.023132
+经度:135.763407
+kyoto Location:[35.02, 135.76] 温度:4.96 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,obj['location'],time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:34.704365
+经度:135.501887
+大阪 Location:[34.7, 135.5] 温度:8.58 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,obj['location'],time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:21.974525
+经度:113.931350
+珠海 Location:[21.97, 113.93] 温度:19.3 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,obj['location'],time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:34.684545
+经度:135.804836
+奈良 Location:[34.68, 135.8] 温度:6.33 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,obj['location'],time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+[2018-03-18 01:11:53,107 - testlogger - INFO 24916 MainProcess 24920 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E56BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:11:53,107 - testlogger - INFO 24916 MainProcess 24920 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E56BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:11:53 2018
+纬度:35.023132
+经度:135.763407
+kyoto Location:[35.02, 135.76] 温度:4.96 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,str(obj['location']),time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:34.704365
+经度:135.501887
+大阪 Location:[34.7, 135.5] 温度:8.58 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,str(obj['location']),time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:21.974525
+经度:113.931350
+珠海 Location:[21.97, 113.93] 温度:19.3 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,str(obj['location']),time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+纬度:34.684545
+经度:135.804836
+奈良 Location:[34.68, 135.8] 温度:6.33 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,str(obj['location']),time.asctime(time.localtime(time.time())),obj['temp'],obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not all arguments converted during string formatting
+
+[2018-03-18 01:13:12,381 - testlogger - INFO 25460 MainProcess 25464 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004115BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:13:12,381 - testlogger - INFO 25460 MainProcess 25464 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004115BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:13:12 2018
+纬度:35.023132
+经度:135.763407
+kyoto Location:[35.02, 135.76] 温度:4.96 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempfrom,tempto,comment,longitude,latitude) values('apihelper.weather_jwdu','kyoto','Sun Mar 18 01:13:12 2018','4.96','4.96','未来两小时不会有雨。还在加班么？注意休息哦',135.763407,35.023132)
+纬度:34.704365
+经度:135.501887
+大阪 Location:[34.7, 135.5] 温度:8.58 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempfrom,tempto,comment,longitude,latitude) values('apihelper.weather_jwdu','大阪','Sun Mar 18 01:13:13 2018','8.58','8.58','未来两小时不会有雨。还在加班么？注意休息哦',135.501887,34.704365)
+纬度:21.974525
+经度:113.931350
+珠海 Location:[21.97, 113.93] 温度:19.3 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempfrom,tempto,comment,longitude,latitude) values('apihelper.weather_jwdu','珠海','Sun Mar 18 01:13:13 2018','19.3','19.3','未来两小时不会有雨。还在加班么？注意休息哦',113.931350,21.974525)
+纬度:34.684545
+经度:135.804836
+奈良 Location:[34.68, 135.8] 温度:6.33 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempfrom,tempto,comment,longitude,latitude) values('apihelper.weather_jwdu','奈良','Sun Mar 18 01:13:13 2018','6.33','6.33','未来两小时不会有雨。还在加班么？注意休息哦',135.804836,34.684545)
+[2018-03-18 01:17:37,345 - testlogger - INFO 25620 MainProcess 24940 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F09BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:17:37,345 - testlogger - INFO 25620 MainProcess 24940 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F09BA8>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:17:37 2018
+kyoto ( 35.0231321 135.7634074 )
+纬度:35.023132
+经度:135.763407
+
+获取kyoto天气失败:Check the parameters.
+大阪 ( 34.704365 135.501887 )
+纬度:34.704365
+经度:135.501887
+
+获取大阪天气失败:Check the parameters.
+珠海 ( 21.9745252 113.931350085 )
+纬度:21.974525
+经度:113.931350
+
+珠海	20180318
+温度:18	湿度:89%	PM25:26 优
+06:34	18:3617日星期六 阴 东风 3-4级
+ 低温 18.0℃~高温 23.0℃
+18日星期日 多云 东风 3-4级
+ 低温 19.0℃~高温 26.0℃
+19日星期一 阵雨 东南风 3-4级
+ 低温 16.0℃~高温 26.0℃
+20日星期二 中雨 北风 4-5级
+ 低温 13.0℃~高温 21.0℃
+21日星期三 多云 北风 3-4级
+ 低温 13.0℃~高温 21.0℃
+
+奈良 ( 34.6845445 135.8048359 )
+纬度:34.684545
+经度:135.804836
+
+获取奈良天气失败:Check the parameters.
+[2018-03-18 01:41:58,878 - testlogger - INFO 28412 MainProcess 25872 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000403EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:41:58,878 - testlogger - INFO 28412 MainProcess 25872 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000403EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:41:58 2018
+kyoto ( 35.0231321 135.7634074 )
+纬度:35.023132
+经度:135.763407
+
+获取kyoto天气失败:Check the parameters.
+大阪 ( 34.704365 135.501887 )
+纬度:34.704365
+经度:135.501887
+
+获取大阪天气失败:Check the parameters.
+珠海 ( 21.9745252 113.931350085 )
+纬度:21.974525
+经度:113.931350
+
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','17日星期六','低温 18.0℃','高温 23.0℃','东风	3-4级','阴',113.931350,21.974525)
+Traceback (most recent call last):
+  File "apihelper.py", line 246, in weather_citys
+    self.weather_city(city)
+  File "apihelper.py", line 367, in weather_city
+    ('apihelper.weather_citys',citystr,datestr,wea['low'],wea['high'],wendu,shidu,pm25+quality,wea['fx']+'\t'+wea['fl'],wea['type'],jdu,wdu)
+TypeError: unsupported operand type(s) for +: 'float' and 'unicode'
+
+奈良 ( 34.6845445 135.8048359 )
+纬度:34.684545
+经度:135.804836
+
+获取奈良天气失败:Check the parameters.
+[2018-03-18 01:45:07,638 - testlogger - INFO 29136 MainProcess 29168 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F3BC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:45:07,638 - testlogger - INFO 29136 MainProcess 29168 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003F3BC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:45:07 2018
+kyoto ( 35.0231321 135.7634074 )
+纬度:35.023132
+经度:135.763407
+
+获取kyoto天气失败:Check the parameters.
+大阪 ( 34.704365 135.501887 )
+纬度:34.704365
+经度:135.501887
+
+获取大阪天气失败:Check the parameters.
+珠海 ( 21.9745252 113.931350085 )
+纬度:21.974525
+经度:113.931350
+
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','17日星期六','低温 18.0℃','高温 23.0℃','东风	3-4级','阴',113.931350,21.974525)
+Traceback (most recent call last):
+  File "apihelper.py", line 246, in weather_citys
+    self.weather_city(city)
+  File "apihelper.py", line 367, in weather_city
+    ('apihelper.weather_citys',citystr,datestr,wea['low'],wea['high'],wendu,shidu,str(pm25)+quality,wea['fx']+'\t'+wea['fl'],wea['type'],jdu,wdu)
+TypeError: a float is required
+
+奈良 ( 34.6845445 135.8048359 )
+纬度:34.684545
+经度:135.804836
+
+获取奈良天气失败:Check the parameters.
+[2018-03-18 01:46:11,924 - testlogger - INFO 29032 MainProcess 28348 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004050C50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:46:11,924 - testlogger - INFO 29032 MainProcess 28348 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000004050C50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:46:11 2018
+kyoto ( 35.0231321 135.7634074 )
+纬度:35.023132
+经度:135.763407
+
+获取kyoto天气失败:Check the parameters.
+大阪 ( 34.704365 135.501887 )
+纬度:34.704365
+经度:135.501887
+
+获取大阪天气失败:频繁调用(3s/次)，请申请，请联系QQ8446666。
+珠海 ( 21.9745252 113.931350085 )
+纬度:21.974525
+经度:113.931350
+
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','17日星期六','低温 18.0℃','高温 23.0℃','东风	3-4级','阴',113.931350,21.974525)
+insert into weather(createdby,location,weadate,tempfrom,tempto,tempcur,humidity,pm,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','20180318','低温 19.0℃','高温 26.0℃','18','89%','26.0优','东风	3-4级','多云',113.931350,21.974525)
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','19日星期一','低温 16.0℃','高温 26.0℃','东南风	3-4级','阵雨',113.931350,21.974525)
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','20日星期二','低温 13.0℃','高温 21.0℃','北风	4-5级','中雨',113.931350,21.974525)
+insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('apihelper.weather_citys','珠海','21日星期三','低温 13.0℃','高温 21.0℃','北风	3-4级','多云',113.931350,21.974525)
+珠海	20180318
+温度:18	湿度:89%	PM25:26 优
+06:34	18:3617日星期六 阴 东风 3-4级
+ 低温 18.0℃~高温 23.0℃
+18日星期日 多云 东风 3-4级
+ 低温 19.0℃~高温 26.0℃
+19日星期一 阵雨 东南风 3-4级
+ 低温 16.0℃~高温 26.0℃
+20日星期二 中雨 北风 4-5级
+ 低温 13.0℃~高温 21.0℃
+21日星期三 多云 北风 3-4级
+ 低温 13.0℃~高温 21.0℃
+
+奈良 ( 34.6845445 135.8048359 )
+纬度:34.684545
+经度:135.804836
+
+获取奈良天气失败:Check the parameters.
+[2018-03-18 01:47:45,845 - testlogger - INFO 30004 MainProcess 30008 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000402EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:47:45,845 - testlogger - INFO 30004 MainProcess 30008 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x000000000402EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:47:45 2018
+纬度:35.023132
+经度:135.763407
+kyoto Location:[35.02, 135.76] 温度:4.96 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,time.asctime(time.localtime(time.time())),obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not enough arguments for format string
+
+纬度:34.704365
+经度:135.501887
+大阪 Location:[34.7, 135.5] 温度:8.58 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,time.asctime(time.localtime(time.time())),obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not enough arguments for format string
+
+纬度:21.974525
+经度:113.931350
+珠海 Location:[21.97, 113.93] 温度:19.3 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,time.asctime(time.localtime(time.time())),obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not enough arguments for format string
+
+纬度:34.684545
+经度:135.804836
+奈良 Location:[34.68, 135.8] 温度:6.33 未来两小时不会有雨。还在加班么？注意休息哦
+Traceback (most recent call last):
+  File "apihelper.py", line 74, in weather_jwdus
+    self.weather_jwdu(city)
+  File "apihelper.py", line 97, in weather_jwdu
+    ('apihelper.weather_jwdu',city,time.asctime(time.localtime(time.time())),obj['temp'],obj['summary'],jdu,wdu)
+TypeError: not enough arguments for format string
+
+[2018-03-18 01:49:06,385 - testlogger - INFO 30456 MainProcess 30460 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E9EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+[2018-03-18 01:49:06,385 - testlogger - INFO 30456 MainProcess 30460 MainThread] funcname=wrapper,args=(<__main__.ApiHelper object at 0x0000000003E9EC50>, ['kyoto', u'\u5927\u962a', u'\u73e0\u6d77', u'\u5948\u826f']),kwargs={}
+
+Sun Mar 18 01:49:06 2018
+纬度:35.023132
+经度:135.763407
+kyoto Location:[35.02, 135.76] 温度:4.96 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempcur,comment,longitude,latitude) values('apihelper.weather_jwdu','kyoto','Sun Mar 18 01:49:06 2018','4.96','未来两小时不会有雨。还在加班么？注意休息哦',135.763407,35.023132)
+纬度:34.704365
+经度:135.501887
+大阪 Location:[34.7, 135.5] 温度:8.58 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempcur,comment,longitude,latitude) values('apihelper.weather_jwdu','大阪','Sun Mar 18 01:49:07 2018','8.58','未来两小时不会有雨。还在加班么？注意休息哦',135.501887,34.704365)
+纬度:21.974525
+经度:113.931350
+珠海 Location:[21.97, 113.93] 温度:19.3 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempcur,comment,longitude,latitude) values('apihelper.weather_jwdu','珠海','Sun Mar 18 01:49:08 2018','19.3','未来两小时不会有雨。还在加班么？注意休息哦',113.931350,21.974525)
+纬度:34.684545
+经度:135.804836
+奈良 Location:[34.68, 135.8] 温度:6.33 未来两小时不会有雨。还在加班么？注意休息哦
+insert into weather(createdby,location,weadate,tempcur,comment,longitude,latitude) values('apihelper.weather_jwdu','奈良','Sun Mar 18 01:49:08 2018','6.33','未来两小时不会有雨。还在加班么？注意休息哦',135.804836,34.684545)

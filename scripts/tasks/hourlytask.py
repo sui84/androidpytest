@@ -1,13 +1,11 @@
 #coding:utf-8
-from threading import Timer
-import common
-import sys
 import os
+import sys
+from threading import Timer
 reload(sys)
 sys.setdefaultencoding('utf8')
 parentpath =os.path.join(os.path.dirname(os.path.realpath(__file__)),'..')
 sys.path.append(parentpath)
-import time
 from utils import loghelper
 import apihelper
 

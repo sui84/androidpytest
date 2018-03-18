@@ -9,13 +9,16 @@ print parentpath
 sys.path.append(parentpath)
 import urllib2
 from bs4 import BeautifulSoup
-from utils import loghelper
+from utils import loghelper,common
 #import requests
 from utils import geohelper
 import pprint
 import HTMLParser
 import json
 import traceback
+from db import savedb
+import time
+
 
 logger = loghelper.create_logger(loghelper.LOGPATH)
 
@@ -29,15 +32,16 @@ class ApiHelper(object):
         self.gh = geohelper.GeoHelper()
         self.ipurls = ['http://ip.chinaz.com/getip.aspx']
         self.address = 'http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=111'
+        self.exchangurl = 'http://qq.ip138.com/hl.asp?from=%s&to=%s&q=100'
         self.jwus = {u'珠海': ( 21.9745252,113.931350085),u'大阪': ( 34.704365,135.501887),'kyoto': (35.0231321,135.7634074),u'奈良': ( 34.684545,135.804836)}
+        self.savedb = savedb.get_db()
 
     def GetResult(self,trs,idx):
-        result = ''
+        arr = []
         tds=trs[idx].find_all('td')
-        result+='\n'
         for td in tds:
-            result+=td.text+'\t'
-        return result
+            arr.append(td.text)
+        return arr
 
 
     @loghelper.exception(logger)
@@ -46,14 +50,19 @@ class ApiHelper(object):
         result = ''
         idx = 1
         for tcur in tcurs:
-            url = 'http://qq.ip138.com/hl.asp?from=%s&to=%s&q=100' % (fcur,tcur)
+            url = self.exchangurl % (fcur,tcur)
             print url
             content = urllib2.urlopen(url).read()
             #soup = BeautifulSoup(content)  not work
             obj=BeautifulSoup(content,'html.parser')
             trs=obj.find_all('tr')
-            result+=self.GetResult(trs,1)
-            result+=self.GetResult(trs,2)
+            result+='\n'+'\t'.join(self.GetResult(trs,1))
+            rate=self.GetResult(trs,2)
+            result+='\n'+'\t'.join(rate)
+            if self.savedb <> None:
+                sql="insert into exchange(createdby,curfrom,curto,ratefrom,rate,rateto) values('%s','%s','%s','%s','%s','%s')" % \
+                    ('apihelper.GetHuiLV',fcur,tcur,rate[0],rate[1],rate[2])
+                self.savedb.ExecNonQuery(sql)
         print result
         return result
 
@@ -83,6 +92,10 @@ class ApiHelper(object):
         obj =json.loads(html.read())
         result +=  '%s Location:%s 温度:%s %s' % (city,obj['location'],obj['temp'],obj['summary'])
         print result
+        if self.savedb <> None:
+            sql="insert into weather(createdby,location,weadate,tempcur,comment,longitude,latitude) values('%s','%s','%s','%s','%s',%f,%f)" % \
+                    ('apihelper.weather_jwdu',city,time.asctime(time.localtime(time.time())),obj['temp'],obj['summary'],jdu,wdu)
+            self.savedb.ExecNonQuery(sql)
         return result
         '''
         >>> pprint.pprint(obj)
@@ -338,9 +351,24 @@ u'temp': 20.0}'''
             result= u"%s\t%s\n温度:%s\t湿度:%s\tPM25:%d %s\n%s\t%s" % (citystr,datestr,wendu,shidu,pm25,quality,sunrise,sunset)
             result+=u"%s %s %s %s\n %s~%s\n"  % (yesterday['date'],yesterday['type'],yesterday['fx'],yesterday['fl']
                                                   ,yesterday['low'],yesterday['high'])
+            # yesterday
+            if self.savedb <> None:
+                sql="insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('%s','%s','%s','%s','%s','%s','%s',%f,%f)" % \
+                    ('apihelper.weather_citys',citystr,yesterday['date'],yesterday['low'],yesterday['high'],yesterday['fx']+'\t'+yesterday['fl'],yesterday['type'],jdu,wdu)
+                self.savedb.ExecNonQuery(sql)
+
             for i in range(0,len(forecast)-1):
+                wea = forecast[i]
                 result+=u"%s %s %s %s\n %s~%s\n"  % (forecast[i]['date'],forecast[i]['type'],forecast[i]['fx'],forecast[i]['fl']
                                                    ,forecast[i]['low'],forecast[i]['high'])
+                if self.savedb <> None:
+                    if i == 0:
+                        sql="insert into weather(createdby,location,weadate,tempfrom,tempto,tempcur,humidity,pm,wind,comment,longitude,latitude) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%f,%f)" % \
+                        ('apihelper.weather_citys',citystr,datestr,wea['low'],wea['high'],wendu,shidu,str(pm25)+quality,wea['fx']+'\t'+wea['fl'],wea['type'],jdu,wdu)
+                    else:
+                        sql="insert into weather(createdby,location,weadate,tempfrom,tempto,wind,comment,longitude,latitude) values('%s','%s','%s','%s','%s','%s','%s',%f,%f)" % \
+                        ('apihelper.weather_citys',citystr,wea['date'],wea['low'],wea['high'],wea['fx']+'\t'+wea['fl'],wea['type'],jdu,wdu)
+                    self.savedb.ExecNonQuery(sql)
         else:
             result = u'获取%s天气失败:%s' % (city,datadict["message"])
         print result
@@ -369,9 +397,17 @@ u'temp': 20.0}'''
             if tr.a <> None and tr.a.text in citys:
                 city =  tr.a.text
                 tds=tr.find_all('td')
+                weadate,tempfrom,tempto,rain = spans[0].text.replace('\n                        ',''),tds[2].span.text,tds[1].span.text,tds[3].text
+                weadate2,tempfrom2,tempto2,rain2 = spans[1].text.replace('\n                        ',''),tds[6].span.text,tds[5].span.text,tds[7].text
                 print 'city:%s\t%s\ttemp:%s~%s\train:%s\t%s\ttemp:%s~%s\train:%s' \
-                      % (city,spans[0].text.replace('\n                        ',''),tds[2].span.text,tds[1].span.text,tds[3].text,spans[1].text.replace('\n                        ',''),tds[6].span.text,tds[5].span.text,tds[7].text)
-
+                      % (city,weadate,tempfrom,tempto,rain,weadate2,tempfrom2,tempto2,rain2)
+                if self.savedb <> None:
+                    sql="insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('%s','%s','%s','%s','%s','%s')" % \
+                    ('apihelper.weather_jps',city,weadate,tempfrom,tempto,rain)
+                    self.savedb.ExecNonQuery(sql)
+                    sql="insert into weather(createdby,location,weadate,tempfrom,tempto,rain) values('%s','%s','%s','%s','%s','%s')" % \
+                    ('apihelper.weather_jps',city,weadate2,tempfrom2,tempto2,rain2)
+                    self.savedb.ExecNonQuery(sql)
 
 if __name__ == '__main__':
     ah =ApiHelper()
@@ -379,6 +415,7 @@ if __name__ == '__main__':
     ah.GetHuiLV( 'CNY',['USD','MOP','JPY'])
     ah.weather_jwdus(['kyoto',u'大阪',u'珠海',u'奈良'])
     ah.weather_citys(['kyoto',u'大阪',u'珠海',u'奈良'])
+    exit(0)
     #ah.location(( 21.9745252,113.931350085))
 
 
